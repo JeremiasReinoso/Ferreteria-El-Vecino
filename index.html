@@ -3,181 +3,464 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ferreter&iacute;a El Vecino</title>
+  <title>Ferretería El Vecino</title>
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Saltar al contenido</a>
 
-  <header class="header" id="inicio">
-    <div class="container header__content">
-      <div class="brand">
-        <span class="brand__badge">Ferreter&iacute;a</span>
-        <h1 class="brand__name">El Vecino</h1>
-      </div>
-      <nav class="nav" aria-label="Navegaci&oacute;n principal">
-        <a href="#inicio" class="nav__link">Inicio</a>
-        <a href="#productos" class="nav__link">Productos</a>
-        <a href="#servicios" class="nav__link">Servicios</a>
-        <a href="#contacto" class="nav__link">Contacto</a>
-      </nav>
+  <!-- Cursor personalizado -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- Partículas de fondo -->
+  <div class="particles" id="particles"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">⚙</span>
+      <span class="logo-text">El <strong>Vecino</strong></span>
     </div>
-  </header>
+    <ul class="nav-links">
+      <li><a href="#inicio" class="nav-link">Inicio</a></li>
+      <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+      <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
 
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="container hero__content">
-      <div class="hero__text">
-        <p class="hero__eyebrow">Calidad profesional para cada proyecto</p>
-        <h2 id="hero-title">Todo para la construcci&oacute;n en un solo lugar</h2>
-        <p class="hero__subtitle">Herramientas, materiales y asesoramiento experto para particulares y obras. Todo listo para que avances sin demoras.</p>
-        <div class="hero__actions">
-          <a href="https://wa.me/54911XXXXXXX" class="btn btn--primary" target="_blank" rel="noopener">Consultar por WhatsApp</a>
-          <a href="#productos" class="btn btn--ghost">Ver cat&aacute;logo</a>
-        </div>
-        <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__value">+30</span>
-            <span class="stat__label">Productos</span>
-          </div>
-          <div class="stat">
-            <span class="stat__value">24 hs</span>
-            <span class="stat__label">Respuesta r&aacute;pida</span>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg-text">FERRETERÍA</div>
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">Desde 1985 · Lago Puelo</div>
+      <h1 class="hero-title reveal-up">
+        <span class="line">Ferretería</span>
+        <span class="line accent-line">El Vecino</span>
+      </h1>
+      <p class="hero-subtitle reveal-up">
+        Todo lo que necesitás para construir, reparar y crear.<br>
+        Calidad garantizada, precios honestos.
+      </p>
+      <div class="hero-cta reveal-up">
+        <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
+        <a href="#contacto" class="btn-secondary">Contactanos</a>
+      </div>
+    </div>
+    <div class="hero-deco">
+      <div class="deco-ring ring-1"></div>
+      <div class="deco-ring ring-2"></div>
+      <div class="deco-ring ring-3"></div>
+      <div class="deco-gear gear-1">⚙</div>
+      <div class="deco-gear gear-2">⚙</div>
+    </div>
+    <div class="scroll-indicator">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item reveal-up">
+        <div class="stat-number" data-target="40">0</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-item reveal-up">
+        <div class="stat-number" data-target="5000">0</div>
+        <div class="stat-label">Productos disponibles</div>
+      </div>
+      <div class="stat-item reveal-up">
+        <div class="stat-number" data-target="12000">0</div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+      <div class="stat-item reveal-up">
+        <div class="stat-number" data-target="365">0</div>
+        <div class="stat-label">Días al año</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <section class="catalogo" id="catalogo">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Nuestros Productos</span>
+      <h2 class="section-title">Catálogo <em>Completo</em></h2>
+      <p class="section-subtitle">Encontrá todo lo que necesitás organizado por categoría</p>
+    </div>
+
+    <!-- Filtros de categoría -->
+    <div class="category-filters reveal-up" id="categoryFilters">
+      <button class="filter-btn active" data-cat="all">Todos</button>
+      <button class="filter-btn" data-cat="herramientas">🔧 Herramientas</button>
+      <button class="filter-btn" data-cat="pinturas">🎨 Pinturas</button>
+      <button class="filter-btn" data-cat="electricidad">⚡ Electricidad</button>
+      <button class="filter-btn" data-cat="plomeria">🚿 Plomería</button>
+      <button class="filter-btn" data-cat="construccion">🧱 Construcción</button>
+      <button class="filter-btn" data-cat="jardin">🌿 Jardín</button>
+      <button class="filter-btn" data-cat="seguridad">🔒 Seguridad</button>
+    </div>
+
+    <!-- Grid de productos -->
+    <div class="products-grid" id="productsGrid">
+
+      <!-- HERRAMIENTAS -->
+      <div class="product-card reveal-up" data-cat="herramientas">
+        <div class="card-img">🔨</div>
+        <div class="card-body">
+          <span class="card-cat">Herramientas</span>
+          <h3 class="card-title">Martillo Profesional</h3>
+          <p class="card-desc">Mango fibra de vidrio, cabeza 500g. Ideal para carpintería y albañilería.</p>
+          <div class="card-footer">
+            <span class="card-price">$8.500</span>
+            <button class="card-btn">Consultar</button>
           </div>
         </div>
       </div>
-      <div class="hero__panel">
-        <div class="hero__card">
-          <h3>Atenci&oacute;n personalizada</h3>
-          <p>Te acompa&ntilde;amos desde la elecci&oacute;n hasta la entrega. Ped&iacute; asesoramiento t&eacute;cnico sin cargo.</p>
-          <ul>
-            <li>Stock actualizado</li>
-            <li>Env&iacute;os en la zona</li>
-            <li>Marcas l&iacute;deres</li>
-          </ul>
+
+      <div class="product-card reveal-up" data-cat="herramientas">
+        <div class="card-img">🪛</div>
+        <div class="card-body">
+          <span class="card-cat">Herramientas</span>
+          <h3 class="card-title">Set Destornilladores x12</h3>
+          <p class="card-desc">Acero cromo-vanadio, mangos ergonómicos. Planos, Phillips y Torx incluidos.</p>
+          <div class="card-footer">
+            <span class="card-price">$12.900</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="herramientas">
+        <div class="card-img">🪚</div>
+        <div class="card-body">
+          <span class="card-cat">Herramientas</span>
+          <h3 class="card-title">Sierra de Mano</h3>
+          <p class="card-desc">Hoja endurecida 400mm, dientes triples. Corte limpio en madera y PVC.</p>
+          <div class="card-footer">
+            <span class="card-price">$6.200</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="herramientas">
+        <div class="card-img">🔩</div>
+        <div class="card-body">
+          <span class="card-cat">Herramientas</span>
+          <h3 class="card-title">Llave Inglesa 12"</h3>
+          <p class="card-desc">Apertura ajustable hasta 35mm. Acero forjado, acabado cromado.</p>
+          <div class="card-footer">
+            <span class="card-price">$9.800</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PINTURAS -->
+      <div class="product-card reveal-up" data-cat="pinturas">
+        <div class="card-img">🎨</div>
+        <div class="card-body">
+          <span class="card-cat">Pinturas</span>
+          <h3 class="card-title">Látex Interior Premium</h3>
+          <p class="card-desc">20 litros. Acabado mate satinado, alta cobertura. Lavable y resistente.</p>
+          <div class="card-footer">
+            <span class="card-price">$45.000</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="pinturas">
+        <div class="card-img">🖌️</div>
+        <div class="card-body">
+          <span class="card-cat">Pinturas</span>
+          <h3 class="card-title">Esmalte Sintético</h3>
+          <p class="card-desc">4 litros. Alto brillo, secado rápido. Ideal para maderas y metales.</p>
+          <div class="card-footer">
+            <span class="card-price">$18.500</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="pinturas">
+        <div class="card-img">🪣</div>
+        <div class="card-body">
+          <span class="card-cat">Pinturas</span>
+          <h3 class="card-title">Impermeabilizante</h3>
+          <p class="card-desc">10 litros. Uso en techos y terrazas. Protección 10 años garantizada.</p>
+          <div class="card-footer">
+            <span class="card-price">$38.000</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELECTRICIDAD -->
+      <div class="product-card reveal-up" data-cat="electricidad">
+        <div class="card-img">⚡</div>
+        <div class="card-body">
+          <span class="card-cat">Electricidad</span>
+          <h3 class="card-title">Cable Iram 2,5mm x50m</h3>
+          <p class="card-desc">Conductor de cobre, aislación doble. Apto interior y exterior.</p>
+          <div class="card-footer">
+            <span class="card-price">$22.000</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="electricidad">
+        <div class="card-img">🔌</div>
+        <div class="card-body">
+          <span class="card-cat">Electricidad</span>
+          <h3 class="card-title">Caja de Luz Completa</h3>
+          <p class="card-desc">Incluye tapa, portafusibles y bornera. Para instalación empotrada.</p>
+          <div class="card-footer">
+            <span class="card-price">$7.500</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="electricidad">
+        <div class="card-img">💡</div>
+        <div class="card-body">
+          <span class="card-cat">Electricidad</span>
+          <h3 class="card-title">Lámpara LED 12W</h3>
+          <p class="card-desc">Luz cálida/fría. 1100 lúmenes, vida útil 25.000 horas. E27.</p>
+          <div class="card-footer">
+            <span class="card-price">$2.800</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLOMERÍA -->
+      <div class="product-card reveal-up" data-cat="plomeria">
+        <div class="card-img">🚿</div>
+        <div class="card-body">
+          <span class="card-cat">Plomería</span>
+          <h3 class="card-title">Canilla Monocomando</h3>
+          <p class="card-desc">Acero inoxidable, cartucho cerámico. Garantía 2 años.</p>
+          <div class="card-footer">
+            <span class="card-price">$28.000</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="plomeria">
+        <div class="card-img">🔧</div>
+        <div class="card-body">
+          <span class="card-cat">Plomería</span>
+          <h3 class="card-title">Caño PVC Presión 1" x6m</h3>
+          <p class="card-desc">Alta resistencia a presión. Apto agua potable. Unión encolada.</p>
+          <div class="card-footer">
+            <span class="card-price">$5.400</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONSTRUCCIÓN -->
+      <div class="product-card reveal-up" data-cat="construccion">
+        <div class="card-img">🧱</div>
+        <div class="card-body">
+          <span class="card-cat">Construcción</span>
+          <h3 class="card-title">Cemento Portland x50kg</h3>
+          <p class="card-desc">Fraguado rápido. Ideal para estructuras, revoques y contrapisos.</p>
+          <div class="card-footer">
+            <span class="card-price">$14.500</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="construccion">
+        <div class="card-img">🏗️</div>
+        <div class="card-body">
+          <span class="card-cat">Construcción</span>
+          <h3 class="card-title">Adhesivo Cerámico x30kg</h3>
+          <p class="card-desc">Flexible, para interiores y exteriores. Resistente al agua.</p>
+          <div class="card-footer">
+            <span class="card-price">$8.900</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- JARDÍN -->
+      <div class="product-card reveal-up" data-cat="jardin">
+        <div class="card-img">🌿</div>
+        <div class="card-body">
+          <span class="card-cat">Jardín</span>
+          <h3 class="card-title">Manguera Reforzada 25m</h3>
+          <p class="card-desc">Triple capa, antipinchazos. Pistola de riego incluida.</p>
+          <div class="card-footer">
+            <span class="card-price">$16.800</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="jardin">
+        <div class="card-img">🪴</div>
+        <div class="card-body">
+          <span class="card-cat">Jardín</span>
+          <h3 class="card-title">Set Herramientas Jardín</h3>
+          <p class="card-desc">Pala, rastrillo, azada y guantes. Mangos antideslizantes.</p>
+          <div class="card-footer">
+            <span class="card-price">$11.500</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEGURIDAD -->
+      <div class="product-card reveal-up" data-cat="seguridad">
+        <div class="card-img">🔒</div>
+        <div class="card-body">
+          <span class="card-cat">Seguridad</span>
+          <h3 class="card-title">Cerradura Doble Paleta</h3>
+          <p class="card-desc">Acero endurecido, 3 llaves incluidas. Para puertas de madera y metal.</p>
+          <div class="card-footer">
+            <span class="card-price">$19.500</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal-up" data-cat="seguridad">
+        <div class="card-img">🪝</div>
+        <div class="card-body">
+          <span class="card-cat">Seguridad</span>
+          <h3 class="card-title">Candado Arco Largo 60mm</h3>
+          <p class="card-desc">Cuerpo de acero macizo, arco cromado. Anti-serrucho.</p>
+          <div class="card-footer">
+            <span class="card-price">$9.200</span>
+            <button class="card-btn">Consultar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="nosotros" id="nosotros">
+    <div class="nosotros-content">
+      <div class="nosotros-text reveal-up">
+        <span class="section-tag">Quiénes somos</span>
+        <h2 class="section-title">Una ferretería <em>de barrio</em> con alma grande</h2>
+        <p>Somos la ferretería de confianza de Lago Puelo y toda la comarca. Desde 1985 acompañamos cada obra, reparación y proyecto de nuestros vecinos con los mejores productos y el mejor asesoramiento.</p>
+        <p>Nuestro equipo está siempre listo para ayudarte a encontrar lo que necesitás, con precios honestos y atención personalizada.</p>
+        <ul class="nosotros-list">
+          <li>✔ Asesoramiento técnico gratuito</li>
+          <li>✔ Entrega a domicilio en la zona</li>
+          <li>✔ Productos de primeras marcas</li>
+          <li>✔ Atención de lunes a sábado</li>
+        </ul>
+      </div>
+      <div class="nosotros-img reveal-up">
+        <div class="img-placeholder">
+          <div class="img-icon">⚙</div>
+          <div class="img-text">Ferretería El Vecino</div>
+          <div class="img-sub">Lago Puelo, Chubut</div>
         </div>
       </div>
     </div>
   </section>
 
-  <main id="main">
-    <section class="section" id="productos" aria-labelledby="productos-title">
-      <div class="container">
-        <div class="section__heading">
-          <h3 id="productos-title">Cat&aacute;logo de productos</h3>
-          <p class="section__subtitle">Explor&aacute; nuestras categor&iacute;as principales.</p>
-        </div>
-        <div class="categorias-grid">
-          <article class="card-categoria scroll-reveal">
-            <div class="card-categoria__image" style="background-image: url('https://via.placeholder.com/480x320?text=Herramientas');"></div>
-            <div class="card-categoria__body">
-              <h3>Herramientas</h3>
-              <a class="btn btn--secondary" href="herramientas.html" data-category-link="herramientas">Ver productos</a>
-            </div>
-          </article>
-
-          <article class="card-categoria scroll-reveal">
-            <div class="card-categoria__image" style="background-image: url('https://via.placeholder.com/480x320?text=Electricidad');"></div>
-            <div class="card-categoria__body">
-              <h3>Electricidad</h3>
-              <a class="btn btn--secondary" href="electricidad.html" data-category-link="electricidad">Ver productos</a>
-            </div>
-          </article>
-
-          <article class="card-categoria scroll-reveal">
-            <div class="card-categoria__image" style="background-image: url('https://via.placeholder.com/480x320?text=Construccion');"></div>
-            <div class="card-categoria__body">
-              <h3>Construcci&oacute;n</h3>
-              <a class="btn btn--secondary" href="construccion.html" data-category-link="construccion">Ver productos</a>
-            </div>
-          </article>        
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="servicios" aria-labelledby="servicios-title">
-      <div class="container">
-        <div class="section__heading">
-          <h3 id="servicios-title">Servicios</h3>
-          <p class="section__subtitle">Soluciones pensadas para profesionales y particulares.</p>
-        </div>
-        <div class="services">
-          <article class="service scroll-reveal">
-            <h4>Asesoramiento</h4>
-            <p>Gu&iacute;a t&eacute;cnica para elegir la mejor opci&oacute;n seg&uacute;n tu proyecto.</p>
-          </article>
-          <article class="service scroll-reveal">
-            <h4>Presupuestos</h4>
-            <p>Armamos listas completas para obra, con tiempos y costos claros.</p>
-          </article>
-          <article class="service scroll-reveal">
-            <h4>Venta mayorista</h4>
-            <p>Precios especiales para corralones, empresas y grandes pedidos.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--location" id="ubicacion" aria-labelledby="ubicacion-title">
-      <div class="container">
-        <div class="section__heading">
-          <h3 id="ubicacion-title">Ubicaci&oacute;n</h3>
-          <p class="section__subtitle">Encontranos r&aacute;pido y coordin&aacute; tu visita.</p>
-        </div>
-        <div class="location">
-          <div class="location__map-wrap scroll-reveal">
-            <iframe
-              class="location__map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d536.642546783051!2d-71.51486467580466!3d-42.070276405678314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961b93f8d9f05625%3A0x3cd0bcbffa8ca394!2sFerreter%C3%ADa%20El%20Vecino!5e1!3m2!1ses-419!2sar!4v1773862752062!5m2!1ses-419!2sar"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa de la ferreter&iacute;a"
-            ></iframe>
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Hablemos</span>
+      <h2 class="section-title">Contacto</h2>
+    </div>
+    <div class="contacto-grid">
+      <div class="contacto-info reveal-up">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <strong>Dirección</strong>
+            <p>Lago Puelo, Chubut, Argentina</p>
           </div>
-          <div class="location__info-card scroll-reveal">
-            <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 19:00, S&aacute;bados 8:00 - 14:00</p>
-            <div class="location__actions">
-              <a class="btn btn--map" href="https://www.google.com/maps?q=Av.+Principal+123" target="_blank" rel="noopener">C&oacute;mo llegar</a>
-              <a class="btn btn--whatsapp" href="https://wa.me/549" target="_blank" rel="noopener">WhatsApp</a>
-              <a class="btn btn--call" href="tel:+541112345678">Llamar</a>
-            </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <strong>Teléfono</strong>
+            <p>+54 9 (2944) 000-000</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <strong>Horario</strong>
+            <p>Lunes a Sábado: 8:00 a 19:00</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💬</div>
+          <div>
+            <strong>WhatsApp</strong>
+            <p>+54 9 (2944) 000-000</p>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="section section--alt" id="contacto" aria-labelledby="contacto-title">
-      <div class="container">
-        <div class="section__heading">
-          <h3 id="contacto-title">Contacto</h3>
-          <p class="section__subtitle">Estamos listos para ayudarte en cada compra.</p>
+      <form class="contacto-form reveal-up" id="contactForm">
+        <div class="form-group">
+          <input type="text" placeholder="Tu nombre" required />
+          <label>Tu nombre</label>
         </div>
-        <div class="contact">
-          <div class="contact__card">
-            <p><strong>Tel&eacute;fono:</strong> +54 11 1234-5678</p>
-            <p><strong>Facebook:</strong> <a href="https://facebook.com" target="_blank" rel="noopener">facebook.com/FerreteriaElVecino</a></p>
-            <p><strong>Email:</strong> ventas@ferreteriaelvecino.com</p>
-          </div>
-          <div class="contact__cta">
-            <h4>Atenci&oacute;n inmediata</h4>
-            <p>Respondemos r&aacute;pido por WhatsApp con stock y precios actualizados.</p>
-            <a href="https://wa.me/54911XXXXXXX" class="btn btn--primary" target="_blank" rel="noopener">Escribir ahora</a>
-          </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Tu teléfono" />
+          <label>Tu teléfono</label>
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="form-group">
+          <textarea placeholder="Tu consulta..." rows="4" required></textarea>
+          <label>Tu consulta</label>
+        </div>
+        <button type="submit" class="btn-primary full-width">Enviar Mensaje ✉</button>
+      </form>
+    </div>
+  </section>
 
-  <a class="whatsapp-fab" href="https://wa.me/54911XXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <span class="whatsapp-fab__icon">W</span>
-    <span>WhatsApp</span>
-  </a>
-
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Ferreter&iacute;a El Vecino. Todos los derechos reservados.</p>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-icon">⚙</span>
+        <span>Ferretería <strong>El Vecino</strong></span>
+      </div>
+      <p class="footer-copy">© 2025 Ferretería El Vecino · Lago Puelo, Chubut · Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </div>
   </footer>
+
+  <!-- Modal de consulta -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-icon">✉</div>
+      <h3>¡Consulta enviada!</h3>
+      <p>Te contactamos a la brevedad por WhatsApp o teléfono.</p>
+      <button class="btn-primary" id="modalOk">Aceptar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
