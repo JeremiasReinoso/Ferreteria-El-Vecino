@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferreter&iacute;a El Vecino</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="header" id="inicio">
+    <div class="container header__content">
+      <div class="brand">
+        <span class="brand__badge">Ferreter&iacute;a</span>
+        <h1 class="brand__name">El Vecino</h1>
+      </div>
+      <nav class="nav" aria-label="Navegaci&oacute;n principal">
+        <a href="#inicio" class="nav__link">Inicio</a>
+        <a href="#productos" class="nav__link">Productos</a>
+        <a href="#servicios" class="nav__link">Servicios</a>
+        <a href="#contacto" class="nav__link">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__content">
+      <div class="hero__text">
+        <p class="hero__eyebrow">Calidad profesional para cada proyecto</p>
+        <h2 id="hero-title">Todo para la construcci&oacute;n en un solo lugar</h2>
+        <p class="hero__subtitle">Herramientas, materiales y asesoramiento experto para particulares y obras. Todo listo para que avances sin demoras.</p>
+        <div class="hero__actions">
+          <a href="https://wa.me/54911XXXXXXX" class="btn btn--primary" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          <a href="#productos" class="btn btn--ghost">Ver cat&aacute;logo</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__value">+30</span>
+            <span class="stat__label">Productos</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">24 hs</span>
+            <span class="stat__label">Respuesta r&aacute;pida</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__panel">
+        <div class="hero__card">
+          <h3>Atenci&oacute;n personalizada</h3>
+          <p>Te acompa&ntilde;amos desde la elecci&oacute;n hasta la entrega. Ped&iacute; asesoramiento t&eacute;cnico sin cargo.</p>
+          <ul>
+            <li>Stock actualizado</li>
+            <li>Env&iacute;os en la zona</li>
+            <li>Marcas l&iacute;deres</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="section" id="productos" aria-labelledby="productos-title">
+      <div class="container">
+        <div class="section__heading">
+          <h3 id="productos-title">Cat&aacute;logo de productos</h3>
+          <p class="section__subtitle">Explor&aacute; nuestras categor&iacute;as principales.</p>
+        </div>
+        <div class="categorias-grid">
+          <article class="card-categoria scroll-reveal">
+            <div class="card-categoria__image" style="background-image: url('https://via.placeholder.com/480x320?text=Herramientas');"></div>
+            <div class="card-categoria__body">
+              <h3>Herramientas</h3>
+              <a class="btn btn--secondary" href="herramientas.html" data-category-link="herramientas">Ver productos</a>
+            </div>
+          </article>
+
+          <article class="card-categoria scroll-reveal">
+            <div class="card-categoria__image" style="background-image: url('https://via.placeholder.com/480x320?text=Electricidad');"></div>
+            <div class="card-categoria__body">
+              <h3>Electricidad</h3>
+              <a class="btn btn--secondary" href="electricidad.html" data-category-link="electricidad">Ver productos</a>
+            </div>
+          </article>
+
+          <article class="card-categoria scroll-reveal">
+            <div class="card-categoria__image" style="background-image: url('https://via.placeholder.com/480x320?text=Construccion');"></div>
+            <div class="card-categoria__body">
+              <h3>Construcci&oacute;n</h3>
+              <a class="btn btn--secondary" href="construccion.html" data-category-link="construccion">Ver productos</a>
+            </div>
+          </article>        
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="servicios" aria-labelledby="servicios-title">
+      <div class="container">
+        <div class="section__heading">
+          <h3 id="servicios-title">Servicios</h3>
+          <p class="section__subtitle">Soluciones pensadas para profesionales y particulares.</p>
+        </div>
+        <div class="services">
+          <article class="service scroll-reveal">
+            <h4>Asesoramiento</h4>
+            <p>Gu&iacute;a t&eacute;cnica para elegir la mejor opci&oacute;n seg&uacute;n tu proyecto.</p>
+          </article>
+          <article class="service scroll-reveal">
+            <h4>Presupuestos</h4>
+            <p>Armamos listas completas para obra, con tiempos y costos claros.</p>
+          </article>
+          <article class="service scroll-reveal">
+            <h4>Venta mayorista</h4>
+            <p>Precios especiales para corralones, empresas y grandes pedidos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--location" id="ubicacion" aria-labelledby="ubicacion-title">
+      <div class="container">
+        <div class="section__heading">
+          <h3 id="ubicacion-title">Ubicaci&oacute;n</h3>
+          <p class="section__subtitle">Encontranos r&aacute;pido y coordin&aacute; tu visita.</p>
+        </div>
+        <div class="location">
+          <div class="location__map-wrap scroll-reveal">
+            <iframe
+              class="location__map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d536.642546783051!2d-71.51486467580466!3d-42.070276405678314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961b93f8d9f05625%3A0x3cd0bcbffa8ca394!2sFerreter%C3%ADa%20El%20Vecino!5e1!3m2!1ses-419!2sar!4v1773862752062!5m2!1ses-419!2sar"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de la ferreter&iacute;a"
+            ></iframe>
+          </div>
+          <div class="location__info-card scroll-reveal">
+            <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 19:00, S&aacute;bados 8:00 - 14:00</p>
+            <div class="location__actions">
+              <a class="btn btn--map" href="https://www.google.com/maps?q=Av.+Principal+123" target="_blank" rel="noopener">C&oacute;mo llegar</a>
+              <a class="btn btn--whatsapp" href="https://wa.me/549" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn--call" href="tel:+541112345678">Llamar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="contacto" aria-labelledby="contacto-title">
+      <div class="container">
+        <div class="section__heading">
+          <h3 id="contacto-title">Contacto</h3>
+          <p class="section__subtitle">Estamos listos para ayudarte en cada compra.</p>
+        </div>
+        <div class="contact">
+          <div class="contact__card">
+            <p><strong>Tel&eacute;fono:</strong> +54 11 1234-5678</p>
+            <p><strong>Facebook:</strong> <a href="https://facebook.com" target="_blank" rel="noopener">facebook.com/FerreteriaElVecino</a></p>
+            <p><strong>Email:</strong> ventas@ferreteriaelvecino.com</p>
+          </div>
+          <div class="contact__cta">
+            <h4>Atenci&oacute;n inmediata</h4>
+            <p>Respondemos r&aacute;pido por WhatsApp con stock y precios actualizados.</p>
+            <a href="https://wa.me/54911XXXXXXX" class="btn btn--primary" target="_blank" rel="noopener">Escribir ahora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="whatsapp-fab" href="https://wa.me/54911XXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span class="whatsapp-fab__icon">W</span>
+    <span>WhatsApp</span>
+  </a>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Ferreter&iacute;a El Vecino. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
