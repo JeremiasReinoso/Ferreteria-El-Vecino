@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        // Delay escalonado para elementos del mismo contenedor
         const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal-up'));
         const delay = siblings.indexOf(entry.target) * 100;
         setTimeout(() => {
@@ -152,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Actualizar botón activo
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -164,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (show) {
           card.classList.remove('hidden');
-          // Animación escalonada
           setTimeout(() => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px) scale(0.97)';
@@ -222,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      // Animación del botón
       const btn = form.querySelector('.btn-primary');
       btn.textContent = 'Enviando...';
       btn.style.opacity = '0.7';
@@ -254,125 +250,125 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-   // ── 11. Carro de compras ───────────────────────────────────
-   const phoneNumber = '5492944000000'; // Reemplazar con número real
+  // ── 11. Carro de compras ───────────────────────────────────
+  const phoneNumber = '5492944000000'; // ⚠️ CONFIGURAR: Reemplazar con número real
 
-   // Cargar carro desde localStorage
-   let cart = JSON.parse(localStorage.getItem('ferreteria-carro')) || [];
+  // Cargar carro desde localStorage
+  let cart = JSON.parse(localStorage.getItem('ferreteria-carro')) || [];
 
-   function updateCartBadge() {
-     const badge = document.getElementById('cartBadge');
-     const count = cart.reduce((sum, item) => sum + item.qty, 0);
-     badge.textContent = count;
-     badge.style.display = count > 0 ? 'flex' : 'none';
-   }
+  function updateCartBadge() {
+    const badge = document.getElementById('cartBadge');
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
+  }
 
-   function renderCartItems() {
-     const container = document.getElementById('cartItems');
-     const totalEl = document.getElementById('cartTotal');
-     if (cart.length === 0) {
-       container.innerHTML = '<p class="cart-empty">El carro está vacío</p>';
-       totalEl.textContent = '$0';
-       return;
-     }
-     container.innerHTML = '';
-     let total = 0;
-     cart.forEach((item, index) => {
-       const itemTotal = item.price * item.qty;
-       total += itemTotal;
-       const el = document.createElement('div');
-       el.className = 'cart-item';
-       el.innerHTML = `
-         <div class="cart-item-info">
-           <span class="cart-item-title">${item.title}</span>
-           <span class="cart-item-price">$${item.price.toLocaleString('es-AR')} x ${item.qty}</span>
-         </div>
-         <button class="cart-item-remove" data-index="${index}">✕</button>
-       `;
-       container.appendChild(el);
-     });
-     totalEl.textContent = `$${total.toLocaleString('es-AR')}`;
-   }
+  function renderCartItems() {
+    const container = document.getElementById('cartItems');
+    const totalEl = document.getElementById('cartTotal');
+    if (cart.length === 0) {
+      container.innerHTML = '<p class="cart-empty">El carro está vacío</p>';
+      totalEl.textContent = '$0';
+      return;
+    }
+    container.innerHTML = '';
+    let total = 0;
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.qty;
+      total += itemTotal;
+      const el = document.createElement('div');
+      el.className = 'cart-item';
+      el.innerHTML = `
+        <div class="cart-item-info">
+          <span class="cart-item-title">${item.title}</span>
+          <span class="cart-item-price">$${item.price.toLocaleString('es-AR')} x ${item.qty}</span>
+        </div>
+        <button class="cart-item-remove" data-index="${index}">✕</button>
+      `;
+      container.appendChild(el);
+    });
+    totalEl.textContent = `$${total.toLocaleString('es-AR')}`;
+  }
 
-   // Añadir productos al carro
-   document.querySelectorAll('.add-to-cart').forEach(btn => {
-     btn.addEventListener('click', (e) => {
-       const card = e.target.closest('.product-card');
-       const title = card.querySelector('.card-title').textContent;
-       const priceText = card.querySelector('.card-price').textContent.replace(/[^\d]/g, '');
-       const price = parseInt(priceText, 10);
-       const existing = cart.find(i => i.title === title);
-       if (existing) {
-         existing.qty += 1;
-       } else {
-         cart.push({ title, price, qty: 1 });
-       }
-       localStorage.setItem('ferreteria-carro', JSON.stringify(cart));
-       updateCartBadge();
-       renderCartItems();
-       // Feedback visual
-       btn.textContent = '✓ Añadido';
-       btn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
-       setTimeout(() => {
-         btn.textContent = 'Añadir al carro';
-         btn.style.background = '';
-       }, 1000);
-     });
-   });
+  // Añadir productos al carro
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const card = e.target.closest('.product-card');
+      const title = card.querySelector('.card-title').textContent;
+      const priceText = card.querySelector('.card-price').textContent.replace(/[^\d]/g, '');
+      const price = parseInt(priceText, 10);
+      const existing = cart.find(i => i.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price, qty: 1 });
+      }
+      localStorage.setItem('ferreteria-carro', JSON.stringify(cart));
+      updateCartBadge();
+      renderCartItems();
+      // Feedback visual
+      btn.textContent = '✓ Añadido';
+      btn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
+      setTimeout(() => {
+        btn.textContent = 'Agregar';
+        btn.style.background = '';
+      }, 1000);
+    });
+  });
 
-   // Eliminar item del carro (delegación)
-   document.getElementById('cartItems').addEventListener('click', (e) => {
-     if (e.target.classList.contains('cart-item-remove')) {
-       const idx = parseInt(e.target.getAttribute('data-index'), 10);
-       cart.splice(idx, 1);
-       localStorage.setItem('ferreteria-carro', JSON.stringify(cart));
-       renderCartItems();
-       updateCartBadge();
-     }
-   });
+  // Eliminar item del carro (delegación)
+  document.getElementById('cartItems').addEventListener('click', (e) => {
+    if (e.target.classList.contains('cart-item-remove')) {
+      const idx = parseInt(e.target.getAttribute('data-index'), 10);
+      cart.splice(idx, 1);
+      localStorage.setItem('ferreteria-carro', JSON.stringify(cart));
+      renderCartItems();
+      updateCartBadge();
+    }
+  });
 
-   // Abrir/cerrar modal del carro
-   const cartFab = document.getElementById('cartFab');
-   const cartOverlay = document.getElementById('cartOverlay');
-   const cartClose = document.getElementById('cartClose');
-   if (cartFab) {
-     cartFab.addEventListener('click', () => {
-       renderCartItems();
-       cartOverlay.classList.add('active');
-     });
-   }
-   if (cartClose) {
-     cartClose.addEventListener('click', () => {
-       cartOverlay.classList.remove('active');
-     });
-   }
-   if (cartOverlay) {
-     cartOverlay.addEventListener('click', (e) => {
-       if (e.target === cartOverlay) cartOverlay.classList.remove('active');
-     });
-   }
+  // Abrir/cerrar modal del carro
+  const cartFab = document.getElementById('cartFab');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartClose = document.getElementById('cartClose');
+  if (cartFab) {
+    cartFab.addEventListener('click', () => {
+      renderCartItems();
+      cartOverlay.classList.add('active');
+    });
+  }
+  if (cartClose) {
+    cartClose.addEventListener('click', () => {
+      cartOverlay.classList.remove('active');
+    });
+  }
+  if (cartOverlay) {
+    cartOverlay.addEventListener('click', (e) => {
+      if (e.target === cartOverlay) cartOverlay.classList.remove('active');
+    });
+  }
 
-   // Enviar carro por WhatsApp
-   document.getElementById('sendCartBtn').addEventListener('click', () => {
-     if (cart.length === 0) return;
-     let message = '🛒 *Pedido - Ferretería El Vecino*\n\n';
-     let total = 0;
-     cart.forEach(item => {
-       const subtotal = item.price * item.qty;
-       total += subtotal;
-       message += `• ${item.title} - $${item.price.toLocaleString('es-AR')} x ${item.qty} = $${subtotal.toLocaleString('es-AR')}\n`;
-     });
-     message += `\n*Total: $${total.toLocaleString('es-AR')}*`;
-     message += '\n\nPor favor confirmar disponibilidad y precio final.';
-     const phone = phoneNumber;
-     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-     window.open(url, '_blank');
-   });
+  // Enviar carro por WhatsApp
+  document.getElementById('sendCartBtn').addEventListener('click', () => {
+    if (cart.length === 0) return;
+    let message = '🛒 *Pedido - Ferretería El Vecino*\n\n';
+    let total = 0;
+    cart.forEach(item => {
+      const subtotal = item.price * item.qty;
+      total += subtotal;
+      message += `• ${item.title} - $${item.price.toLocaleString('es-AR')} x ${item.qty} = $${subtotal.toLocaleString('es-AR')}\n`;
+    });
+    message += `\n*Total: $${total.toLocaleString('es-AR')}*`;
+    message += '\n\nPor favor confirmar disponibilidad y precio final.';
+    const phone = phoneNumber;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  });
 
-   // Inicializar badge
-   updateCartBadge();
+  // Inicializar badge
+  updateCartBadge();
 
-   // ── 12. Efecto de brillo en hover de cards ───────────────
+  // ── 12. Efecto de brillo en hover de cards ───────────────
   document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
